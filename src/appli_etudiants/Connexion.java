@@ -148,7 +148,7 @@ public class Connexion extends javax.swing.JDialog {
                 //instanciation de la classe Driver du paquetage jdbc de mysql
                 Class.forName("com.mysql.jdbc.Driver");
                 //Chaine de connexion (prise dans l'onglet services)
-                String connexionUrl="jdbc:mysql://localhost/appli_etudiant?user=applietudiants&password=toto";
+                String connexionUrl="jdbc:mysql://localhost/gsbperso?user=admin&password=wxcvbn";
                
                 //etablissement de la connexion
                 Connection maConnexion=(Connection)DriverManager.getConnection(connexionUrl);
@@ -163,13 +163,14 @@ public class Connexion extends javax.swing.JDialog {
                 // ici on appelle md5 membre static de la classe outils
                 mdp=Outils.md5(mdp);
             
-                ResultSet lignesRetournees=requete.executeQuery("select * from Utilisateurs where identifiant='"+identifiant+"' and mot_de_passe='"+mdp+"'");
+                ResultSet lignesRetournees=requete.executeQuery("select * from Utilisateurs, roles where identifiant='"+identifiant+"' and mot_de_passe='"+mdp+"' AND utilisateurs.idrole=roles.id");
                 if (lignesRetournees.next()){
                     String nom=lignesRetournees.getString("nom");
+                    String role=lignesRetournees.getString("nomr");
                     //Modifications de la Mission 2 à placer ici
                     
                     
-                    this.fenetre.connecte(nom);
+                    this.fenetre.connecte(nom,role);
                     this.setVisible(false);
                     this.fenetre.majConnexion();
                     

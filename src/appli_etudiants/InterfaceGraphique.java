@@ -56,6 +56,11 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         connexionMenuItem = new javax.swing.JMenuItem();
         deconnexionMenuItem = new javax.swing.JMenuItem();
         SortieMenuItem = new javax.swing.JMenuItem();
+        gestionMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         aideMenu = new javax.swing.JMenu();
         aproposMenuItem = new javax.swing.JMenuItem();
         nomjMenu = new javax.swing.JMenu();
@@ -67,7 +72,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         desktopPane.setBorder(new javax.swing.border.MatteBorder(null));
 
         fileMenu.setMnemonic('f');
-        fileMenu.setText("Etudiants");
+        fileMenu.setText("Accueil");
 
         connexionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         connexionMenuItem.setMnemonic('o');
@@ -100,6 +105,27 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         fileMenu.add(SortieMenuItem);
 
         nomMenuBar.add(fileMenu);
+
+        gestionMenu1.setText("Gestion");
+
+        jMenuItem2.setText("Modifier ses informations");
+        gestionMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Ajouter un utilisateur");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        gestionMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("jMenuItem4");
+        gestionMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("jMenuItem5");
+        gestionMenu1.add(jMenuItem5);
+
+        nomMenuBar.add(gestionMenu1);
 
         aideMenu.setMnemonic('h');
         aideMenu.setText("Aide");
@@ -142,6 +168,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         this.fenConnexion=new Connexion(this, true);
         this.fenConnexion.setVisible(true);
         
+        
         //JOptionPane.showMessageDialog(this, "cc");
     }//GEN-LAST:event_connexionMenuItemActionPerformed
 
@@ -150,11 +177,16 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         fenDeconnexion=new Deconnexion(this, true);
         this.fenDeconnexion.setVisible(true);
     }//GEN-LAST:event_deconnexionMenuItemActionPerformed
-    public void connecte(String leNom){
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    public void connecte(String leNom, String leRole){
         //maj de l'etat de la connexion
         this.connecte=true;
         //ajout du nom dans la fenetre
         this.nomjMenu.setText("Connecté en tant que : "+leNom);
+        this.fileMenu.setText(leRole);
         this.nomjMenu.setEnabled(false);
         
         
@@ -210,7 +242,12 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private javax.swing.JMenuItem deconnexionMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu gestionMenu1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuBar nomMenuBar;
     private javax.swing.JMenu nomjMenu;
     // End of variables declaration//GEN-END:variables
